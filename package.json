@@ -1,0 +1,26 @@
+{
+  "name": "js-test",
+  "version": "1.0.0",
+  "description": "Test basic JS and programming knowledge",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Cutii/JS-Test.git"
+  },
+  "keywords": [
+    "test",
+    "js"
+  ],
+  "author": "fbillioud",
+  "license": "GPL-3.0-or-later",
+  "bugs": {
+    "url": "https://github.com/Cutii/JS-Test/issues"
+  },
+  "homepage": "https://github.com/Cutii/JS-Test#readme",
+  "devDependencies": {
+    "jest": "^23.6.0"
+  }
+}
