@@ -12,6 +12,7 @@ function createRandomTest(title) {
   createPrebuildTest(a,b,x,y,n, `random test ${id}`);
 }
 
+let count = 0;
 function createPrebuildTest(a, b, x, y, n, title) {
   const list = [];
   const map = [];
@@ -24,7 +25,14 @@ function createPrebuildTest(a, b, x, y, n, title) {
     }
   }
   const result = resolve(a,b,x,y,list);
-  stream.write(`test('${title}', () => expect(findBestSpot(${a}, ${b}, ${x}, ${y}, ${JSON.stringify(list)})).toEqual(${JSON.stringify(result)}));\n\n`);
+  count++;
+  stream.write(`
+    describe('test ${count}',() => {
+      test('${title}', () => {
+        expect(findBestSpot(${a}, ${b}, ${x}, ${y}, ${JSON.stringify(list)})).toEqual(${JSON.stringify(result)});
+      });
+    });
+  `);
 }
 
 function getRandomInt(max) {
@@ -70,6 +78,7 @@ createPrebuildTest(1, 2, 1, 2, 1, 'two spaces, one mine');
 createPrebuildTest(2, 2, 1, 1, 8, 'multiple options');
 createPrebuildTest(1, 10, 1, 3, 10, 'one row');
 createPrebuildTest(10, 1, 3, 1, 10, 'one column');
+createPrebuildTest(100, 100, 25, 25, 100, 'large numbers');
 
 for(id=0;id<20;id++) {
   createRandomTest(id);

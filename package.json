@@ -4,7 +4,7 @@
   "description": "Test basic JS and programming knowledge",
   "main": "index.js",
   "scripts": {
-    "test": "jest"
+    "test": "jest -b"
   },
   "repository": {
     "type": "git",
