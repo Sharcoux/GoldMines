@@ -14,20 +14,22 @@ function createRandomTest(title) {
 
 let count = 0;
 function createPrebuildTest(a, b, x, y, n, title) {
-  const list = [];
-  const map = [];
-  for(i=0; i<n; i++) {
-    const coord = {x: getRandomInt(a), y: getRandomInt(b)};
-    if(!map[coord.x]) map[coord.x] = [];
-    if(!map[coord.x][coord.y]) {
-      map[coord.x][coord.y] = true;
-      list.push(coord);
+  let list = n
+  if(!Array.isArray(n)) {
+    list = []
+    const map = [];
+    for(i=0; i<n; i++) {
+      const coord = {x: getRandomInt(a), y: getRandomInt(b)};
+      if(!map[coord.x]) map[coord.x] = [];
+      if(!map[coord.x][coord.y]) {
+        map[coord.x][coord.y] = true;
+        list.push(coord);
+      }
     }
   }
   const result = resolve(a,b,x,y,list);
-  count++;
   stream.write(`
-    describe('test ${count}',() => {
+    describe('test ${++count}',() => {
       test('${title}', () => {
         expect(findBestSpot(${a}, ${b}, ${x}, ${y}, ${JSON.stringify(list)})).toEqual(${JSON.stringify(result)});
       });
@@ -79,7 +81,10 @@ createPrebuildTest(2, 2, 1, 1, 8, 'multiple options');
 createPrebuildTest(1, 10, 1, 3, 10, 'one row');
 createPrebuildTest(10, 1, 3, 1, 10, 'one column');
 createPrebuildTest(100, 100, 25, 25, 100, 'large numbers');
+createPrebuildTest(5, 5, 3, 3, [{x: 2, y: 1}, {x: 1, y: 2}, {x: 2, y: 3}, {x: 3, y: 2}], 'star');
 
 for(id=0;id<20;id++) {
   createRandomTest(id);
 }
+
+stream.close()
