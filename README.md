@@ -11,7 +11,7 @@ Your goal is to write a program able to calculate the coordinates of the most pr
 
 ## Example
 
-Given a land of 3km by 5km containing only one gold mine at coordinate (2,2), and considering that you can afford only a 1km x 1km exploitation, your program should decide to set up your company at (2,2) in order to own 1 gold mine.
+Given a land of 6km by 4km containing gold mines at coordinates (1, 0), (5, 0), (2,2) and (3, 3), and considering that you can afford only a 2km x 2km exploitation, your program should decide to set up your company at (2,2) in order to own 2 gold mine.
 
 Here is a graphic example: ![Graphic example](./illustration.svg)
 
