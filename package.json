@@ -21,6 +21,6 @@
   },
   "homepage": "https://github.com/Cutii/JS-Test#readme",
   "devDependencies": {
-    "jest": "^26.2.2"
+    "jest": "^27.4.3"
   }
 }
